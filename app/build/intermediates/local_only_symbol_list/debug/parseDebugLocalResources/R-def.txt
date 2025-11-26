@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable honda_civic_2022
+drawable hyundai_elantra_2020
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ram_1500_2023
+drawable tesla_model_3_2023
+drawable toyota_corolla_2021
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.CarRental
+xml backup_rules
+xml data_extraction_rules
