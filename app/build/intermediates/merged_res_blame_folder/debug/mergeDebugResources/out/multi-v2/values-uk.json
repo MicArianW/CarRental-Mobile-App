@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.carrental.app-mergeDebugResources-66:/values-uk/values-uk.xml",
+            "outputFile": "com.example.carrental.app-mergeDebugResources-64:/values-uk/values-uk.xml",
             "map": [
                 {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/4910324c2609ebb93220b92a4d9ba4a9/transformed/foundation-release/res/values-uk/values-uk.xml",
@@ -55,23 +55,6 @@
                     }
                 },
                 {
-                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/c91b1a12f0a5c19f4dcfe6d7f728958f/transformed/core-1.13.1/res/values-uk/values-uk.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,155,257,358,459,564,669,782",
-                        "endColumns": "99,101,100,100,104,104,112,100",
-                        "endOffsets": "150,252,353,454,559,664,777,878"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,101",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,205,307,408,509,614,719,10875",
-                        "endColumns": "99,101,100,100,104,104,112,100",
-                        "endOffsets": "200,302,403,504,609,714,827,10971"
-                    }
-                },
-                {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/77f419213a1a3f09cee981a0dd39553e/transformed/play-services-base-18.0.1/res/values-uk/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -120,6 +103,23 @@
                         "startOffsets": "2020",
                         "endColumns": "145",
                         "endOffsets": "2161"
+                    }
+                },
+                {
+                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/905a9ac5efe3e52478a020d5fe7a0d39/transformed/core-1.13.0/res/values-uk/values-uk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,155,257,358,459,564,669,782",
+                        "endColumns": "99,101,100,100,104,104,112,100",
+                        "endOffsets": "150,252,353,454,559,664,777,878"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,101",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,205,307,408,509,614,719,10875",
+                        "endColumns": "99,101,100,100,104,104,112,100",
+                        "endOffsets": "200,302,403,504,609,714,827,10971"
                     }
                 }
             ]

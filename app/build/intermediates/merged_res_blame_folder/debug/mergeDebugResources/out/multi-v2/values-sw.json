@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.carrental.app-mergeDebugResources-66:/values-sw/values-sw.xml",
+            "outputFile": "com.example.carrental.app-mergeDebugResources-64:/values-sw/values-sw.xml",
             "map": [
                 {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/60370d48ad24e843ebe7fb3b82ef9253/transformed/ui-release/res/values-sw/values-sw.xml",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/c91b1a12f0a5c19f4dcfe6d7f728958f/transformed/core-1.13.1/res/values-sw/values-sw.xml",
+                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/905a9ac5efe3e52478a020d5fe7a0d39/transformed/core-1.13.0/res/values-sw/values-sw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.carrental.app-mergeDebugResources-66:/values-ky/values-ky.xml",
+            "outputFile": "com.example.carrental.app-mergeDebugResources-64:/values-ky/values-ky.xml",
             "map": [
                 {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/60370d48ad24e843ebe7fb3b82ef9253/transformed/ui-release/res/values-ky/values-ky.xml",
@@ -72,23 +72,6 @@
                     }
                 },
                 {
-                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/c91b1a12f0a5c19f4dcfe6d7f728958f/transformed/core-1.13.1/res/values-ky/values-ky.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,155,257,360,467,571,675,786",
-                        "endColumns": "99,101,102,106,103,103,110,100",
-                        "endOffsets": "150,252,355,462,566,670,781,882"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,101",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,205,307,410,517,621,725,10927",
-                        "endColumns": "99,101,102,106,103,103,110,100",
-                        "endOffsets": "200,302,405,512,616,720,831,11023"
-                    }
-                },
-                {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/681dad2d20b428e5631346d7b48c8d60/transformed/browser-1.4.0/res/values-ky/values-ky.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -103,6 +86,23 @@
                         "startOffsets": "3220,3614,3719,3828",
                         "endColumns": "98,104,108,105",
                         "endOffsets": "3314,3714,3823,3929"
+                    }
+                },
+                {
+                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/905a9ac5efe3e52478a020d5fe7a0d39/transformed/core-1.13.0/res/values-ky/values-ky.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,155,257,360,467,571,675,786",
+                        "endColumns": "99,101,102,106,103,103,110,100",
+                        "endOffsets": "150,252,355,462,566,670,781,882"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,101",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,205,307,410,517,621,725,10927",
+                        "endColumns": "99,101,102,106,103,103,110,100",
+                        "endOffsets": "200,302,405,512,616,720,831,11023"
                     }
                 },
                 {

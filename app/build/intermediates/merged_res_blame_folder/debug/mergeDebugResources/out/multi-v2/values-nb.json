@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.carrental.app-mergeDebugResources-66:/values-nb/values-nb.xml",
+            "outputFile": "com.example.carrental.app-mergeDebugResources-64:/values-nb/values-nb.xml",
             "map": [
                 {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/4910324c2609ebb93220b92a4d9ba4a9/transformed/foundation-release/res/values-nb/values-nb.xml",
@@ -35,6 +35,23 @@
                         "startOffsets": "831,924,3329,3426,3526,3924,4000,10119,10208,10290,10354,10418,10498,10580,10751,10828,10895",
                         "endColumns": "92,80,96,99,87,75,87,88,81,63,63,79,81,69,76,66,119",
                         "endOffsets": "919,1000,3421,3521,3609,3995,4083,10203,10285,10349,10413,10493,10575,10645,10823,10890,11010"
+                    }
+                },
+                {
+                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/905a9ac5efe3e52478a020d5fe7a0d39/transformed/core-1.13.0/res/values-nb/values-nb.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,447,555,661,781",
+                        "endColumns": "93,101,96,98,107,105,119,100",
+                        "endOffsets": "144,246,343,442,550,656,776,877"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,101",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,199,301,398,497,605,711,10650",
+                        "endColumns": "93,101,96,98,107,105,119,100",
+                        "endOffsets": "194,296,393,492,600,706,826,10746"
                     }
                 },
                 {
@@ -103,23 +120,6 @@
                         "startOffsets": "3219,3614,3715,3827",
                         "endColumns": "109,100,111,96",
                         "endOffsets": "3324,3710,3822,3919"
-                    }
-                },
-                {
-                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/c91b1a12f0a5c19f4dcfe6d7f728958f/transformed/core-1.13.1/res/values-nb/values-nb.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,149,251,348,447,555,661,781",
-                        "endColumns": "93,101,96,98,107,105,119,100",
-                        "endOffsets": "144,246,343,442,550,656,776,877"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,101",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,199,301,398,497,605,711,10650",
-                        "endColumns": "93,101,96,98,107,105,119,100",
-                        "endOffsets": "194,296,393,492,600,706,826,10746"
                     }
                 }
             ]

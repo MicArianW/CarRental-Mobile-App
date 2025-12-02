@@ -1,0 +1,35 @@
+com.example.carrental.test.app-customview-poolingcontainer-1.0.0-0 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/0075d47a312c426f2a586059d08bc9a1/transformed/customview-poolingcontainer-1.0.0/res
+com.example.carrental.test.app-savedstate-1.2.1-1 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/0c672093864dfbd86cd5f7cf2a25d117/transformed/savedstate-1.2.1/res
+com.example.carrental.test.app-lifecycle-runtime-2.7.0-2 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/12e8721570aa3a84bf01b30fcaffcf2f/transformed/lifecycle-runtime-2.7.0/res
+com.example.carrental.test.app-ui-util-release-3 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/24ee98152904e32ac10a44da19b8e1c1/transformed/ui-util-release/res
+com.example.carrental.test.app-core-runtime-2.2.0-4 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/2bc57309de8018a859d6bebfa3f5755c/transformed/core-runtime-2.2.0/res
+com.example.carrental.test.app-emoji2-1.3.0-5 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/3c359cca3a824e91dd09c3cda6ddc14a/transformed/emoji2-1.3.0/res
+com.example.carrental.test.app-activity-compose-1.9.0-6 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/4db8b7b78b9d6e95e95bef1d9d705539/transformed/activity-compose-1.9.0/res
+com.example.carrental.test.app-ui-test-release-7 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/55ca8d0705b29fef389a623e923b523c/transformed/ui-test-release/res
+com.example.carrental.test.app-annotation-experimental-1.4.0-8 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/5eab577664d030db83acb64abfa549ab/transformed/annotation-experimental-1.4.0/res
+com.example.carrental.test.app-ui-release-9 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/60370d48ad24e843ebe7fb3b82ef9253/transformed/ui-release/res
+com.example.carrental.test.app-activity-1.9.0-10 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/62a8e0729ee35946482cefe431c3a891/transformed/activity-1.9.0/res
+com.example.carrental.test.app-savedstate-ktx-1.2.1-11 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/68ede4fe1f6767bc58ce10df674c95c9/transformed/savedstate-ktx-1.2.1/res
+com.example.carrental.test.app-ui-unit-release-12 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/7d426184215e23438832607eee8f71c3/transformed/ui-unit-release/res
+com.example.carrental.test.app-ui-graphics-release-13 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/887a8f2b27d7ce024bfbab0fc9f6a480/transformed/ui-graphics-release/res
+com.example.carrental.test.app-lifecycle-livedata-core-2.7.0-14 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/88eff5e70100d6234eea565edbc35e06/transformed/lifecycle-livedata-core-2.7.0/res
+com.example.carrental.test.app-core-ktx-1.13.0-15 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/8d2e7fe9bd67d19877b47b07374ee12b/transformed/core-ktx-1.13.0/res
+com.example.carrental.test.app-profileinstaller-1.3.1-16 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/902475a508442420d9e27558bfce8a8f/transformed/profileinstaller-1.3.1/res
+com.example.carrental.test.app-core-1.13.0-17 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/905a9ac5efe3e52478a020d5fe7a0d39/transformed/core-1.13.0/res
+com.example.carrental.test.app-activity-ktx-1.9.0-18 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/95bbe6b895d0fb63e39d10219c4917a5/transformed/activity-ktx-1.9.0/res
+com.example.carrental.test.app-lifecycle-viewmodel-2.7.0-19 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/9c09325a03f8a0fcdcb62b2563a39ad4/transformed/lifecycle-viewmodel-2.7.0/res
+com.example.carrental.test.app-ui-text-release-20 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/a19b47e741201e38b33cadbd28e7e5fd/transformed/ui-text-release/res
+com.example.carrental.test.app-startup-runtime-1.1.1-21 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/b36027ceff5a120f8295583dc460928e/transformed/startup-runtime-1.1.1/res
+com.example.carrental.test.app-runtime-saveable-release-22 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/c703dec8fef28323c86d08a117b15261/transformed/runtime-saveable-release/res
+com.example.carrental.test.app-runtime-release-23 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/dd56bf4d8e6d2102868f874380ecf807/transformed/runtime-release/res
+com.example.carrental.test.app-lifecycle-runtime-ktx-2.7.0-24 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/e02cac8fc0a14fcafa1ea41c2631eb94/transformed/lifecycle-runtime-ktx-2.7.0/res
+com.example.carrental.test.app-lifecycle-process-2.7.0-25 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/e525193823861c55a5800873f9eb6217/transformed/lifecycle-process-2.7.0/res
+com.example.carrental.test.app-ui-test-junit4-release-26 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/e62bad6ea28c687237235bb093bee111/transformed/ui-test-junit4-release/res
+com.example.carrental.test.app-core-1.6.0-27 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/ea191952bcacdb94df6293ff74eaf696/transformed/core-1.6.0/res
+com.example.carrental.test.app-lifecycle-viewmodel-savedstate-2.7.0-28 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/ec4914a54e7bc725bae837724022a35d/transformed/lifecycle-viewmodel-savedstate-2.7.0/res
+com.example.carrental.test.app-ui-geometry-release-29 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/ef401494c611ccc6e38de59ef8df7782/transformed/ui-geometry-release/res
+com.example.carrental.test.app-lifecycle-viewmodel-ktx-2.7.0-30 /Users/mickaelarian/.gradle/caches/8.10.2/transforms/fb2326eab7b5df68b6e7fdb220937713/transformed/lifecycle-viewmodel-ktx-2.7.0/res
+com.example.carrental.test.app-androidTest-31 /Users/mickaelarian/AndroidStudioProjects/CarRental-WithAuth 2/app/build/generated/res/resValues/androidTest/debug
+com.example.carrental.test.app-mergeDebugAndroidTestResources-32 /Users/mickaelarian/AndroidStudioProjects/CarRental-WithAuth 2/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.carrental.test.app-mergeDebugAndroidTestResources-33 /Users/mickaelarian/AndroidStudioProjects/CarRental-WithAuth 2/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.carrental.test.app-debugAndroidTest-34 /Users/mickaelarian/AndroidStudioProjects/CarRental-WithAuth 2/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

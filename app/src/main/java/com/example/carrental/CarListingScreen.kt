@@ -12,8 +12,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.BookOnline
-import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -36,15 +36,12 @@ fun CarListingScreen(
     onCarClick: (Car) -> Unit = {},
     onLogout: () -> Unit = {}
 ) {
-    // Collect booked car IDs from ViewModel
     val bookedCarIds by viewModel.bookedCarIds.collectAsState()
-    
-    // Filter out booked cars
+
     val availableCars = cars.filter { car ->
         car.id !in bookedCarIds
     }
 
-    // --- FILTER STATES ---
     var selectedVehicleType by remember { mutableStateOf<VehicleType?>(null) }
     var selectedMakes by remember { mutableStateOf(setOf<String>()) }
     var priceRange by remember { mutableStateOf(0f..200f) }
@@ -52,11 +49,9 @@ fun CarListingScreen(
     var minYear by remember { mutableStateOf(2018) }
     var electricOnly by remember { mutableStateOf(false) }
 
-    // --- SHEET STATE ---
     var activeSheet by remember { mutableStateOf<FilterSheet?>(null) }
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    
-    // User menu state
+
     var showUserMenu by remember { mutableStateOf(false) }
 
     Column(
@@ -64,11 +59,7 @@ fun CarListingScreen(
             .fillMaxSize()
             .background(Color(0xFFF8F8F8))
     ) {
-
-        // Enhanced Search Bar with User Icon
-        EnhancedSearchBar(
-            onUserIconClick = { showUserMenu = true }
-        )
+        EnhancedSearchBar(onUserIconClick = { showUserMenu = true })
 
         TuroFilterBar(
             onMakeModelClick = { activeSheet = FilterSheet.MAKE_MODEL },
@@ -81,12 +72,8 @@ fun CarListingScreen(
 
         Spacer(Modifier.height(8.dp))
 
-        // =======================================================
-        //  FILTERING LOGIC
-        // =======================================================
         val filteredCars = availableCars.filter { car ->
 
-            // --- Normalize make ---
             val make = car.name.substringBefore(" ").trim().lowercase()
             val selectedMakesNormalized =
                 selectedMakes.map { it.trim().lowercase() }.toSet()
@@ -94,11 +81,9 @@ fun CarListingScreen(
             val makeOk =
                 selectedMakesNormalized.isEmpty() || selectedMakesNormalized.contains(make)
 
-            // --- Price ---
             val price = car.pricePerDay.filter(Char::isDigit).toIntOrNull() ?: 9999
             val priceOk = price in priceRange.start.toInt()..priceRange.endInclusive.toInt()
 
-            // --- Year ---
             val yearMatches = Regex("\\d{4}")
                 .findAll(car.name)
                 .map { it.value.toInt() }
@@ -106,21 +91,13 @@ fun CarListingScreen(
             val year = yearMatches.lastOrNull() ?: 0
             val yearOk = year >= minYear
 
-            // --- Seats ---
             val seatsOk = minSeats?.let { car.seats >= it } ?: true
-
-            // --- Vehicle Type ---
             val typeOk = selectedVehicleType?.let { car.vehicleType == it } ?: true
-
-            // --- Electric ---
             val electricOk = if (!electricOnly) true else car.fuelType.equals("Electric", true)
 
             priceOk && yearOk && seatsOk && typeOk && electricOk && makeOk
         }
 
-        // =======================================================
-        //  CAR LIST
-        // =======================================================
         if (filteredCars.isEmpty()) {
             Column(
                 modifier = Modifier
@@ -129,20 +106,16 @@ fun CarListingScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(
-                    text = "🚗",
-                    fontSize = 64.sp
-                )
+                Text("🚗", fontSize = 64.sp)
                 Spacer(Modifier.height(16.dp))
                 Text(
-                    text = "No Cars Available",
+                    "No Cars Available",
                     fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF212121)
+                    fontWeight = FontWeight.Bold
                 )
                 Spacer(Modifier.height(8.dp))
                 Text(
-                    text = "All cars are currently booked or don't match your filters.",
+                    "All cars are booked or filtered out.",
                     fontSize = 16.sp,
                     color = Color.Gray
                 )
@@ -163,7 +136,6 @@ fun CarListingScreen(
         }
     }
 
-    // User Menu Dropdown
     if (showUserMenu) {
         UserMenuDropdown(
             onDismiss = { showUserMenu = false },
@@ -178,15 +150,12 @@ fun CarListingScreen(
         )
     }
 
-    // Modal Filter Sheets
     if (activeSheet != null) {
         ModalBottomSheet(
             onDismissRequest = { activeSheet = null },
             sheetState = sheetState
         ) {
-
             when (activeSheet) {
-
                 FilterSheet.MAKE_MODEL -> MakeModelSheet(
                     cars = cars,
                     selectedMakes = selectedMakes,
@@ -196,7 +165,6 @@ fun CarListingScreen(
                     },
                     onClose = { activeSheet = null }
                 )
-
                 FilterSheet.PRICE -> PriceSheet(
                     currentRange = priceRange,
                     onApply = {
@@ -205,7 +173,6 @@ fun CarListingScreen(
                     },
                     onClose = { activeSheet = null }
                 )
-
                 FilterSheet.YEAR -> YearSheet(
                     currentMinYear = minYear,
                     onApply = {
@@ -214,7 +181,6 @@ fun CarListingScreen(
                     },
                     onClose = { activeSheet = null }
                 )
-
                 FilterSheet.SEATS -> SeatsSheet(
                     currentMinSeats = minSeats,
                     onApply = {
@@ -223,7 +189,6 @@ fun CarListingScreen(
                     },
                     onClose = { activeSheet = null }
                 )
-
                 FilterSheet.ELECTRIC -> ElectricSheet(
                     electricOnly = electricOnly,
                     onApply = {
@@ -232,7 +197,6 @@ fun CarListingScreen(
                     },
                     onClose = { activeSheet = null }
                 )
-
                 FilterSheet.ALL -> AllFiltersSheet(
                     selectedVehicleType = selectedVehicleType,
                     onVehicleTypeChange = { selectedVehicleType = it },
@@ -247,16 +211,12 @@ fun CarListingScreen(
                     },
                     onClose = { activeSheet = null }
                 )
-
-                null -> {} // required
+                null -> {}
             }
         }
     }
 }
 
-// ============================================================
-//  Enhanced Search Bar with User Icon
-// ============================================================
 @Composable
 fun EnhancedSearchBar(onUserIconClick: () -> Unit) {
     Card(
@@ -277,8 +237,7 @@ fun EnhancedSearchBar(onUserIconClick: () -> Unit) {
                 Text("Anywhere", fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 Text("Any date – Any date", color = Color.Gray)
             }
-            
-            // User Icon Button
+
             IconButton(
                 onClick = onUserIconClick,
                 modifier = Modifier
@@ -297,9 +256,6 @@ fun EnhancedSearchBar(onUserIconClick: () -> Unit) {
     }
 }
 
-// ============================================================
-//  User Menu Dropdown
-// ============================================================
 @Composable
 fun UserMenuDropdown(
     onDismiss: () -> Unit,
@@ -309,25 +265,18 @@ fun UserMenuDropdown(
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(
-                "My Account",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
+            Text("My Account", fontSize = 20.sp, fontWeight = FontWeight.Bold)
         },
         text = {
-            Column(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                // View Bookings Option
+            Column(Modifier.fillMaxWidth()) {
+
+                // View Bookings
                 Card(
                     onClick = onViewBookings,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color(0xFFF3E5F5)
-                    ),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFE8EAF6)),
                     shape = RoundedCornerShape(12.dp)
                 ) {
                     Row(
@@ -337,37 +286,26 @@ fun UserMenuDropdown(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            imageVector = Icons.Default.BookOnline,
+                            imageVector = Icons.Default.List,
                             contentDescription = null,
-                            tint = Color(0xFF6200EE),
+                            tint = Color(0xFF303F9F),
                             modifier = Modifier.size(32.dp)
                         )
                         Spacer(Modifier.width(16.dp))
                         Column {
-                            Text(
-                                "Current Bookings",
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = Color(0xFF212121)
-                            )
-                            Text(
-                                "View your active trips",
-                                fontSize = 14.sp,
-                                color = Color.Gray
-                            )
+                            Text("Current Bookings", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                            Text("View your active rentals", color = Color.Gray)
                         }
                     }
                 }
-                
-                // Cancel Bookings Option
+
+                // Cancel / Manage Bookings
                 Card(
                     onClick = onManageBookings,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = Color(0xFFFFEBEE)
-                    ),
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFFFFEBEE)),
                     shape = RoundedCornerShape(12.dp)
                 ) {
                     Row(
@@ -377,40 +315,26 @@ fun UserMenuDropdown(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Cancel,
+                            imageVector = Icons.Default.Delete,
                             contentDescription = null,
                             tint = Color(0xFFD32F2F),
                             modifier = Modifier.size(32.dp)
                         )
                         Spacer(Modifier.width(16.dp))
                         Column {
-                            Text(
-                                "Manage Bookings",
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = Color(0xFF212121)
-                            )
-                            Text(
-                                "Cancel existing bookings",
-                                fontSize = 14.sp,
-                                color = Color.Gray
-                            )
+                            Text("Manage Bookings", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                            Text("Cancel or modify trips", color = Color.Gray)
                         }
                     }
                 }
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text("Close")
-            }
+            TextButton(onClick = onDismiss) { Text("Close") }
         }
     )
 }
 
-// ============================================================
-//  Reuse existing filter components
-// ============================================================
 @Composable
 fun TuroFilterBar(
     onMakeModelClick: () -> Unit,
@@ -457,11 +381,11 @@ fun TuroFilterChip(
     }
 }
 
-// ============================================================
-//  Car Item Card
-// ============================================================
 @Composable
-fun CarItem(car: Car, onClick: () -> Unit) {
+fun CarItem(
+    car: Car,
+    onClick: () -> Unit
+) {
     Card(
         onClick = onClick,
         modifier = Modifier
@@ -482,11 +406,7 @@ fun CarItem(car: Car, onClick: () -> Unit) {
             )
 
             Column(Modifier.padding(16.dp)) {
-                Text(
-                    car.name,
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Text(car.name, fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
                 Spacer(Modifier.height(8.dp))
 
@@ -494,9 +414,9 @@ fun CarItem(car: Car, onClick: () -> Unit) {
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("⛽ ${car.fuelType}", fontSize = 14.sp, color = Color.Gray)
-                    Text("👥 ${car.seats} seats", fontSize = 14.sp, color = Color.Gray)
-                    Text("🔧 ${car.transmission}", fontSize = 14.sp, color = Color.Gray)
+                    Text("⛽ ${car.fuelType}", color = Color.Gray)
+                    Text("👥 ${car.seats} seats", color = Color.Gray)
+                    Text("🔧 ${car.transmission}", color = Color.Gray)
                 }
 
                 Spacer(Modifier.height(12.dp))
@@ -515,10 +435,8 @@ fun CarItem(car: Car, onClick: () -> Unit) {
 
                     Button(
                         onClick = onClick,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF6200EE)
-                        ),
-                        shape = RoundedCornerShape(8.dp)
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6200EE)),
+                        shape = RoundedCornerShape(10.dp)
                     ) {
                         Text("View Details")
                     }
@@ -527,3 +445,4 @@ fun CarItem(car: Car, onClick: () -> Unit) {
         }
     }
 }
+

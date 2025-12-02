@@ -1,6 +1,9 @@
 package com.example.carrental
 
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,12 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.maps.android.compose.*
+import com.google.android.gms.maps.model.*
 import java.util.Calendar
 
 @Composable
@@ -46,6 +46,13 @@ fun CarDetailsScreen(
     var endDate by remember { mutableStateOf(formatDate(endCal)) }
 
     var pickupLocation by remember { mutableStateOf("Toronto, ON M5V 2T6") }
+
+    // Coordinates (Toronto — replace with real if needed)
+    val pickupLatLng = LatLng(43.6532, -79.3832)
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(pickupLatLng, 14f)
+    }
 
     Column(
         modifier = Modifier
@@ -102,7 +109,6 @@ fun CarDetailsScreen(
 
             Spacer(Modifier.height(16.dp))
 
-            // HOSTED BY
             Text("Hosted by", fontWeight = FontWeight.Bold, fontSize = 18.sp)
             Spacer(Modifier.height(8.dp))
 
@@ -123,7 +129,6 @@ fun CarDetailsScreen(
             Divider()
             Spacer(Modifier.height(16.dp))
 
-            // VEHICLE FEATURES
             Text("Vehicle features", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
 
@@ -133,7 +138,6 @@ fun CarDetailsScreen(
             Divider()
             Spacer(Modifier.height(16.dp))
 
-            // TRIP SECTION
             Text("Your trip", fontSize = 20.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
 
@@ -141,10 +145,6 @@ fun CarDetailsScreen(
             DateField(startDate) {
                 openCalendar(context, startCal) {
                     startDate = formatDate(startCal)
-                    if (endCal.timeInMillis <= startCal.timeInMillis) {
-                        endCal.timeInMillis = startCal.timeInMillis + 86400000
-                        endDate = formatDate(endCal)
-                    }
                 }
             }
 
@@ -154,7 +154,11 @@ fun CarDetailsScreen(
             DateField(endDate) {
                 openCalendar(context, endCal) {
                     if (endCal.timeInMillis <= startCal.timeInMillis) {
-                        Toast.makeText(context, "End date must be after start date", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            "End date must be after start date",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         endDate = formatDate(endCal)
                     }
@@ -165,19 +169,41 @@ fun CarDetailsScreen(
             Divider()
             Spacer(Modifier.height(16.dp))
 
-            // PICKUP
+            // PICKUP SECTION (CLICKABLE + MAP)
             Text("Pickup & return location")
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 10.dp)
                     .clickable {
-                        Toast.makeText(context, "Location editing coming…", Toast.LENGTH_SHORT).show()
+                        openInGoogleMaps(context, pickupLocation)
                     }
             ) {
-                Text(pickupLocation, fontSize = 16.sp)
+                Text(pickupLocation, fontSize = 16.sp, color = Color(0xFF1A73E8))
                 Spacer(Modifier.weight(1f))
-                androidx.compose.material3.Icon(Icons.Default.Edit, contentDescription = "")
+                Icon(Icons.Default.Edit, contentDescription = "")
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            // -------- EMBEDDED GOOGLE MAP BELOW PICKUP ----------
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp),
+                elevation = CardDefaults.cardElevation(6.dp)
+            ) {
+
+                GoogleMap(
+                    modifier = Modifier.fillMaxSize(),
+                    cameraPositionState = cameraPositionState
+                ) {
+                    Marker(
+                        state = MarkerState(position = pickupLatLng),
+                        title = "Pickup Location",
+                        snippet = pickupLocation
+                    )
+                }
             }
 
             Spacer(Modifier.height(24.dp))
@@ -187,7 +213,8 @@ fun CarDetailsScreen(
             // CONTINUE BUTTON
             Button(
                 onClick = {
-                    val days = ((endCal.timeInMillis - startCal.timeInMillis) / 86400000).toInt()
+                    val days =
+                        ((endCal.timeInMillis - startCal.timeInMillis) / 86400000).toInt()
                     navController.navigate("checkout/${car.id}/$startDate/$endDate/$days")
                 },
                 modifier = Modifier
@@ -202,7 +229,7 @@ fun CarDetailsScreen(
     }
 }
 
-// ---------- Helpers + small UI elements ---------- //
+// ----- Helper UI components (unchanged) -----
 
 fun formatDate(cal: Calendar): String =
     "%04d-%02d-%02d".format(
@@ -211,11 +238,7 @@ fun formatDate(cal: Calendar): String =
         cal.get(Calendar.DAY_OF_MONTH)
     )
 
-fun openCalendar(
-    context: android.content.Context,
-    cal: Calendar,
-    onSelected: () -> Unit
-) {
+fun openCalendar(context: Context, cal: Calendar, onSelected: () -> Unit) {
     DatePickerDialog(
         context,
         { _, y, m, d ->
@@ -226,6 +249,15 @@ fun openCalendar(
         cal.get(Calendar.MONTH),
         cal.get(Calendar.DAY_OF_MONTH)
     ).show()
+}
+
+fun openInGoogleMaps(context: Context, address: String) {
+    val intent = Intent(
+        Intent.ACTION_VIEW,
+        Uri.parse("https://www.google.com/maps/search/?api=1&query=" + Uri.encode(address))
+    )
+    intent.setPackage("com.google.android.apps.maps")
+    context.startActivity(intent)
 }
 
 @Composable
@@ -283,4 +315,7 @@ fun DateField(label: String, onClick: () -> Unit) {
         }
     }
 }
+
+
+
 

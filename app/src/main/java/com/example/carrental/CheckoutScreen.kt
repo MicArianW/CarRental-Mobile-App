@@ -1,6 +1,10 @@
 package com.example.carrental
 
+import android.net.Uri
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -11,11 +15,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
 
 @Composable
 fun CheckoutScreen(
@@ -50,6 +56,14 @@ fun CheckoutScreen(
     var billingCountry by remember { mutableStateOf("Canada") }
     var marketingOptIn by remember { mutableStateOf(false) }
     var agreeTerms by remember { mutableStateOf(false) }
+
+    // ------- driver license image state -------
+    var licenseImageUri by remember { mutableStateOf<Uri?>(null) }
+    val licensePickerLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        licenseImageUri = uri
+    }
 
     Column(
         modifier = Modifier
@@ -97,6 +111,35 @@ fun CheckoutScreen(
         )
 
         Spacer(Modifier.height(20.dp))
+
+        // =====================================================
+        // DRIVER'S LICENSE UPLOAD (NEW)
+        // =====================================================
+        Text("Driver’s license", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Spacer(Modifier.height(8.dp))
+
+        Button(
+            onClick = { licensePickerLauncher.launch("image/*") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+        ) {
+            Text("Upload Driver’s License")
+        }
+
+        licenseImageUri?.let { uri ->
+            Spacer(Modifier.height(12.dp))
+            Image(
+                painter = rememberAsyncImagePainter(uri),
+                contentDescription = "Driver's license image",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(180.dp),
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Spacer(Modifier.height(24.dp))
 
         // =====================================================
         // PAYMENT METHOD (CUSTOM UI)
@@ -210,14 +253,20 @@ fun CheckoutScreen(
             onClick = {
 
                 if (cardNumber.length < 12 || expiry.length < 4 || cvc.length < 3) {
-                    Toast.makeText(context, "Please complete payment details.", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(
+                        context,
+                        "Please complete payment details.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@Button
                 }
 
                 if (!agreeTerms) {
-                    Toast.makeText(context, "You must accept the terms.", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(
+                        context,
+                        "You must accept the terms.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     return@Button
                 }
 
@@ -231,7 +280,7 @@ fun CheckoutScreen(
                 ) {
                     // Navigate to confirmation screen
                     navController.navigate(
-                        "confirmation/${car.id}/$startDate/$endDate/$days/${total}"
+                        "confirmation/${car.id}/$startDate/$endDate/$days/$total"
                     )
                 }
 
@@ -299,3 +348,7 @@ private fun SummaryCard(
         }
     }
 }
+
+
+
+

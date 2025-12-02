@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.carrental.app-mergeDebugResources-66:/values-pa/values-pa.xml",
+            "outputFile": "com.example.carrental.app-mergeDebugResources-64:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/681dad2d20b428e5631346d7b48c8d60/transformed/browser-1.4.0/res/values-pa/values-pa.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "3279,3663,3764,3878",
                         "endColumns": "104,100,113,102",
                         "endOffsets": "3379,3759,3873,3976"
+                    }
+                },
+                {
+                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/905a9ac5efe3e52478a020d5fe7a0d39/transformed/core-1.13.0/res/values-pa/values-pa.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,358,459,561,659,788",
+                        "endColumns": "97,101,102,100,101,97,128,100",
+                        "endOffsets": "148,250,353,454,556,654,783,884"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,101",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,203,305,408,509,611,709,10770",
+                        "endColumns": "97,101,102,100,101,97,128,100",
+                        "endOffsets": "198,300,403,504,606,704,833,10866"
                     }
                 },
                 {
@@ -69,23 +86,6 @@
                         "startOffsets": "838,931,3384,3476,3575,3981,4059,10229,10317,10401,10469,10538,10617,10698,10871,10951,11017",
                         "endColumns": "92,82,91,98,87,77,97,87,83,67,68,78,80,71,79,65,117",
                         "endOffsets": "926,1009,3471,3570,3658,4054,4152,10312,10396,10464,10533,10612,10693,10765,10946,11012,11130"
-                    }
-                },
-                {
-                    "source": "/Users/mickaelarian/.gradle/caches/8.10.2/transforms/c91b1a12f0a5c19f4dcfe6d7f728958f/transformed/core-1.13.1/res/values-pa/values-pa.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,358,459,561,659,788",
-                        "endColumns": "97,101,102,100,101,97,128,100",
-                        "endOffsets": "148,250,353,454,556,654,783,884"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,101",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,203,305,408,509,611,709,10770",
-                        "endColumns": "97,101,102,100,101,97,128,100",
-                        "endOffsets": "198,300,403,504,606,704,833,10866"
                     }
                 },
                 {
